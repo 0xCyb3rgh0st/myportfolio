@@ -1,0 +1,103 @@
+<footer class="footer">
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h6>Navigation</h6>
+          <ul class="footer-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/writeups/">Writeups</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/labs/">Labs</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h6>Connect</h6>
+          <ul class="footer-nav">
+            <li><a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:your-email@example.com">Email</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h6>Resources</h6>
+          <ul class="footer-nav">
+            <li><a href="/feed.xml">RSS Feed</a></li>
+            <li><a href="/sitemap.xml">Sitemap</a></li>
+            <li><a href="https://github.com/yourusername/myportfolio" target="_blank" rel="noopener noreferrer">Source</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-credit">{{ site.author }} &copy; {{ 'now' | date: '%Y' }}. Security Research Portfolio.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--surface-primary);
+    border-top: 1px solid var(--border-primary);
+    margin-top: var(--spacing-4xl);
+  }
+
+  .footer-content {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .footer-section h6 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-nav a:hover {
+    color: var(--accent-primary);
+  }
+
+  .footer-bottom {
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-primary);
+    text-align: center;
+  }
+
+  .footer-credit {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+layout: default
+permalink: /404.html
+title: Page Not Found
+---
+
+<div class="error-container">
+  <div class="  error-content">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-description">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="btn btn-primary">Return to Home</a>
+  </div>
+</div>
+
+<style>
+  .error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+    padding: 2rem;
+  }
+
+  .error-content {
+    text-align: center;
+  }
+
+  .error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    line-height: 1;
+  }
+
+  .error-title {
+    font-size: 2rem;
+    margin: 1rem 0 0.5rem;
+    color: var(--text);
+  }
+
+  .error-description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+</style>

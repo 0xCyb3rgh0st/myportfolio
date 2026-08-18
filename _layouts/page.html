@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+<div class="page-container">
+  <article class="page-content">
+    {% if page.title %}
+      <header class="page-header">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.description %}
+          <p class="page-description">{{ page.description }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+    
+    {{ content }}
+  </article>
+</div>
+
+<style>
+  .page-container {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .page-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .page-header {
+    margin-bottom: var(--spacing-3xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .page-title {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .page-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .page-content h2 {
+    margin-top: var(--spacing-3xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .page-content h3 {
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .page-content > ul,
+  .page-content > ol {
+    margin-left: var(--spacing-2xl);
+  }
+
+  .page-content li {
+    line-height: var(--line-height-relaxed);
+  }
+</style>

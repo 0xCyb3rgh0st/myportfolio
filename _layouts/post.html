@@ -1,0 +1,251 @@
+---
+layout: default
+---
+
+<div class="post-container">
+  <article class="post-content">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
+      
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+          <i class="far fa-calendar"></i>
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        {% if page.reading_time %}
+          <span class="post-reading-time">
+            <i class="far fa-clock"></i>
+            {{ page.reading_time }} min read
+          </span>
+        {% endif %}
+        {% if page.category %}
+          <span class="post-category">
+            <i class="fas fa-tag"></i>
+            {{ page.category }}
+          </span>
+        {% endif %}
+      </div>
+
+      {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+
+      {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="badge badge-accent">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="post-body">
+      {{ content }}
+    </div>
+
+    {% if page.tags %}
+      <footer class="post-footer">
+        <div class="post-tags-footer">
+          <h6>Tags</h6>
+          <div>
+            {% for tag in page.tags %}
+              <a href="/blog/tag/{{ tag | slugify }}" class="badge badge-accent">#{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </footer>
+    {% endif %}
+  </article>
+
+  <!-- Navigation -->
+  {% if page.previous or page.next %}
+    <nav class="post-navigation">
+      {% if page.previous %}
+        <a href="{{ page.previous.url }}" class="nav-link nav-prev">
+          <span class="nav-label">← Previous</span>
+          <span class="nav-title">{{ page.previous.title }}</span>
+        </a>
+      {% endif %}
+      
+      {% if page.next %}
+        <a href="{{ page.next.url }}" class="nav-link nav-next">
+          <span class="nav-label">Next →</span>
+          <span class="nav-title">{{ page.next.title }}</span>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</div>
+
+<style>
+  .post-container {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .post-header {
+    margin-bottom: var(--spacing-3xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .post-title {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+
+  .post-date,
+  .post-reading-time,
+  .post-category {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .post-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .post-body {
+    font-size: 1.1rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .post-body h2 {
+    margin-top: var(--spacing-3xl);
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+  }
+
+  .post-body h3 {
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .post-body h4 {
+    margin-top: var(--spacing-xl);
+  }
+
+  .post-body pre {
+    margin-left: calc(var(--spacing-lg) * -1);
+    margin-right: calc(var(--spacing-lg) * -1);
+    border-radius: 0;
+  }
+
+  .post-body ul,
+  .post-body ol {
+    margin-left: var(--spacing-2xl);
+  }
+
+  .post-body li {
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .post-body blockquote {
+    margin-left: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .post-footer {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--border-primary);
+  }
+
+  .post-tags-footer h6 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .post-tags-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+
+  .post-tags-footer > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .post-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--border-primary);
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg);
+    background-color: var(--surface-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+  }
+
+  .nav-link:hover {
+    border-color: var(--accent-primary);
+    background-color: var(--surface-hover);
+    transform: translateX(4px);
+  }
+
+  .nav-prev:hover {
+    transform: translateX(-4px);
+  }
+
+  .nav-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 767px) {
+    .post-navigation {
+      grid-template-columns: 1fr;
+    }
+
+    .post-meta {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  }
+</style>

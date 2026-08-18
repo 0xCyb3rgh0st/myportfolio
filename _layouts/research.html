@@ -1,0 +1,227 @@
+---
+layout: default
+---
+
+<div class="research-detail">
+  <article class="research-article">
+    <header class="research-header">
+      <div class="research-meta-top">
+        {% if page.category %}
+          <span class="badge badge-accent">{{ page.category }}</span>
+        {% endif %}
+        {% if page.status %}
+          <span class="badge {% if page.status == 'Published' %}badge-success{% elsif page.status == 'Research' %}badge-info{% endif %}">{{ page.status }}</span>
+        {% endif %}
+      </div>
+
+      <h1 class="research-title">{{ page.title }}</h1>
+
+      {% if page.description %}
+        <p class="research-description">{{ page.description }}</p>
+      {% endif %}
+
+      <div class="research-meta">
+        {% if page.date %}
+          <span class="meta-item">
+            <i class="far fa-calendar"></i>
+            {{ page.date | date: "%B %d, %Y" }}
+          </span>
+        {% endif %}
+        {% if page.reading_time %}
+          <span class="meta-item">
+            <i class="far fa-clock"></i>
+            {{ page.reading_time }} min
+          </span>
+        {% endif %}
+        {% if page.severity %}
+          <span class="meta-item">
+            <i class="fas fa-exclamation-triangle"></i>
+            Severity: <strong>{{ page.severity }}</strong>
+          </span>
+        {% endif %}
+      </div>
+
+      {% if page.technologies %}
+        <div class="research-tech">
+          <h6>Technologies</h6>
+          <div class="tech-list">
+            {% for tech in page.technologies %}
+              <span class="tech-tag">{{ tech }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if page.tags %}
+        <div class="research-tags">
+          {% for tag in page.tags %}
+            <a href="/research/tag/{{ tag | slugify }}" class="badge">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="research-body">
+      {{ content }}
+    </div>
+
+    {% if page.tags %}
+      <footer class="research-footer">
+        <div class="footer-section">
+          <h6>Tags</h6>
+          <div class="tags-footer">
+            {% for tag in page.tags %}
+              <a href="/research/tag/{{ tag | slugify }}" class="badge badge-accent">#{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </footer>
+    {% endif %}
+  </article>
+</div>
+
+<style>
+  .research-detail {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .research-article {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .research-header {
+    margin-bottom: var(--spacing-3xl);
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .research-meta-top {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .research-title {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+  }
+
+  .research-description {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .research-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .research-tech {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .research-tech h6 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .tech-tag {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    background-color: var(--surface-secondary);
+    color: var(--accent-tertiary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-mono);
+  }
+
+  .research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .research-body {
+    font-size: 1.1rem;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .research-body h2 {
+    margin-top: var(--spacing-3xl);
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-xl);
+  }
+
+  .research-body h3 {
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .research-body h4 {
+    margin-top: var(--spacing-xl);
+  }
+
+  .research-body pre {
+    margin-left: calc(var(--spacing-lg) * -1);
+    margin-right: calc(var(--spacing-lg) * -1);
+    border-radius: 0;
+  }
+
+  .research-body ul,
+  .research-body ol {
+    margin-left: var(--spacing-2xl);
+  }
+
+  .research-body li {
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .research-body blockquote {
+    margin-left: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .research-footer {
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-2xl);
+    border-top: 1px solid var(--border-primary);
+  }
+
+  .footer-section h6 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tags-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  @media (max-width: 767px) {
+    .research-meta {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+  }
+</style>

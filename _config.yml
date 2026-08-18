@@ -1,0 +1,99 @@
+# Jekyll Configuration
+# Security Research Portfolio
+
+title: Security Research Portfolio
+description: Independent security research, vulnerability analysis, and technical writeups.
+author: Security Researcher
+email: your-email@example.com
+url: https://yourdomain.com
+baseurl: ""
+lang: en
+timezone: UTC
+
+# Theme
+theme: null
+remote_theme: null
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+future: false
+show_excerpts: false
+
+# Include/Exclude
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - .bundle
+  - .git
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+# Collections
+collections:
+  research:
+    output: true
+    permalink: /research/:slug/
+  projects:
+    output: true
+    permalink: /projects/:slug/
+  labs:
+    output: true
+    permalink: /labs/:slug/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "research"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "labs"
+    values:
+      layout: "lab"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# SEO
+social:
+  name: Security Researcher
+  links:
+    - https://github.com/yourusername
+    - https://linkedin.com/in/yourprofile
+
+webmaster_verifications:
+  google: null
+  bing: null
+
+google_analytics: null
